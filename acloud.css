@@ -1,0 +1,22 @@
+.features-content {
+    display: flex;
+    justify-content: center; /* Center the cards horizontally */
+    flex-wrap: wrap;
+    text-align: left;
+    max-width: 700px; /* Adjust max-width to your needs */
+    margin: 0 auto; /* Center the container horizontally */
+    gap: 20px;
+}
+
+.feature {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    flex: 1;
+}
+.arrow::before {
+    content: "\2192"; /* Unicode character for a right arrow (→) */
+    margin-right: 5px; /* Adjust the margin as needed */
+    color: blue; /* Change the color of the arrow as needed */
+}

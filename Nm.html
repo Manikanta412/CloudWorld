@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manikanta</title>
+    <style>
+        body {
+            background-color: rgba(0, 0, 0, 0.3); /* Light black background with transparency */
+            overflow: hidden; /* Hide overflow to prevent scrollbars */
+        }
+
+        /* Smoke effect */
+        .smoke {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity as needed */
+            background: radial-gradient(circle, rgba(27, 242, 7, 0.3) 10%, transparent 70%);
+            animation: smoke-animation 5s linear infinite; /* Adjust animation duration */
+        }
+
+        @keyframes smoke-animation {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            25% { transform: translateY(-50px) scale(0.7); opacity: 0.3; }
+            50% { transform: translateY(-100px) scale(0.5); opacity: 0.5; }
+            75% { transform: translateY(-150px) scale(0.3); opacity: 0.3; }
+            100% { transform: translateY(-200px) scale(0.1); opacity: 0; }
+        }
+
+        /* Styling for the name */
+        .name {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 36px; /* Adjust font size as needed */
+            color: white; /* Text color */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
+        }
+    </style>
+</head>
+<body>
+    <div class="smoke"></div>
+    <div class="name">Manikanta</div>
+</body>
+</html>
