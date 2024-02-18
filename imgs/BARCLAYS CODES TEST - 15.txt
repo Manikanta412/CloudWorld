@@ -1,0 +1,246 @@
+//Didn't passes the testcases(Only Sample testcases are passed)
+import java.util.Scanner;
+
+class Customer {
+    private String name;
+    private String city;
+    private int age;
+    private String gender;
+    private double totalBillAmount;
+
+    public Customer(String name, String city, int age, String gender, double totalBillAmount) {
+        this.name = name;
+        this.city = city;
+        this.age = age;
+        this.gender = gender;
+        this.totalBillAmount = totalBillAmount;
+    }
+
+    public double calculateDiscount() {
+        return 0; 
+    }
+    public double getTotalBillAmount() {
+        return totalBillAmount;
+    }
+
+    public String toString() {
+        StringBuilder output = new StringBuilder();
+        output.append(name).append("\n");
+        output.append(city).append("\n");
+        output.append(age).append("\n");
+        output.append(gender).append("\n");
+        output.append((int) totalBillAmount).append("\n");
+        return output.toString();
+    }
+}
+
+class BasicCustomer extends Customer {
+    public BasicCustomer(String name, String city, int age, String gender, double totalBillAmount) {
+        super(name, city, age, gender, totalBillAmount);
+    }
+
+    @Override
+    public double calculateDiscount() {
+        
+        return getTotalBillAmount() * 0.05;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ((int) calculateDiscount()) + "\n";
+    }
+}
+
+class PremiumCustomer extends Customer {
+    private double subscriptionAmount;
+
+    public PremiumCustomer(String name, String city, int age, String gender, double totalBillAmount, double subscriptionAmount) {
+        super(name, city, age, gender, totalBillAmount);
+        this.subscriptionAmount = subscriptionAmount;
+    }
+
+    @Override
+    public double calculateDiscount() {
+        
+        return getTotalBillAmount() * 0.1;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder output = new StringBuilder(super.toString());
+        output.append((int) subscriptionAmount).append("\n");
+        output.append((int) calculateDiscount()).append("\n");
+        return output.toString();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String name = scanner.nextLine();
+        String city = scanner.nextLine();
+        int age = Integer.parseInt(scanner.nextLine());
+        String gender = scanner.nextLine();
+        double totalBillAmount = Double.parseDouble(scanner.nextLine());
+        int customerType = Integer.parseInt(scanner.nextLine());
+
+        if (customerType == 0) {
+            BasicCustomer basicCustomer = new BasicCustomer(name, city, age, gender, totalBillAmount);
+            System.out.print(basicCustomer.toString());
+        } else if (customerType == 1) {
+            double subscriptionAmount = Double.parseDouble(scanner.nextLine());
+            PremiumCustomer premiumCustomer = new PremiumCustomer(name, city, age, gender, totalBillAmount, subscriptionAmount);
+            System.out.print(premiumCustomer.toString());
+        }
+
+        scanner.close();
+    }
+}
+
+##############################################################
+
+
+class Person:
+    def __init__(self, firstName, lastName, idNumber):
+        self.firstName = firstName
+        self.lastName = lastName
+        self.idNumber = idNumber
+
+class Student(Person):
+    def __init__(self, firstName, lastName, idNumber, scores):
+        super().__init__(firstName, lastName, idNumber)
+        self.scores = scores
+
+    def calculate(self):
+        average = sum(self.scores) / len(self.scores)
+        if 90 <= average <= 100:
+            return 'O'
+        elif 80 <= average < 90:
+            return 'E'
+        elif 70 <= average < 80:
+            return 'A'
+        elif 55 <= average < 70:
+            return 'P'
+        elif 40 <= average < 55:
+            return 'D'
+        else:
+            return 'T'
+
+# Input
+firstName = input()
+lastName = input()
+idNumber = int(input())
+numScores = int(input())
+scores = list(map(int, input().split()))
+
+# Create Student object
+student = Student(firstName, lastName, idNumber, scores)
+
+# Output
+print("Name:", student.lastName, student.firstName)
+print("ID:", student.idNumber)
+print("Grade:", student.calculate())
+
+
+#############################################
+
+
+
+class Person {
+    private String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void display() {
+        System.out.println(name);
+    }
+}
+
+class Staff extends Person {
+    private int staffId;
+
+    public Staff(String name, int staffId) {
+        super(name);
+        this.staffId = staffId;
+    }
+
+    public int getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(int staffId) {
+        this.staffId = staffId;
+    }
+
+    public void display() {
+        super.display();
+        System.out.println(staffId);
+    }
+}
+
+class TemporaryStaff extends Staff {
+    private int days;
+    private int hoursWorked;
+
+    public TemporaryStaff(String name, int staffId, int days, int hoursWorked) {
+        super(name, staffId);
+        this.days = days;
+        this.hoursWorked = hoursWorked;
+    }
+
+    public int getDays() {
+        return days;
+    }
+
+    public void setDays(int days) {
+        this.days = days;
+    }
+
+    public int getHoursWorked() {
+        return hoursWorked;
+    }
+
+    public void setHoursWorked(int hoursWorked) {
+        this.hoursWorked = hoursWorked;
+    }
+
+    public int calculateSalary() {
+        return days * hoursWorked * 50;
+    }
+
+    public void display() {
+        super.display();
+        System.out.println(days);
+        System.out.println(hoursWorked);
+        System.out.println(calculateSalary());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        String name = sc.nextLine();
+        int staffId = Integer.parseInt(sc.nextLine());
+        int days = Integer.parseInt(sc.nextLine());
+        int hoursWorked = Integer.parseInt(sc.nextLine());
+        sc.close();
+
+        
+        TemporaryStaff temporaryStaff = new TemporaryStaff(name, staffId, days, hoursWorked);
+
+        
+        temporaryStaff.display();
+    }
+}
